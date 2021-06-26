@@ -4,15 +4,12 @@
 
 const game = new Game();
 
-game.phrases.forEach((phrase, index) => {
-    console.log(`Phrase ${index} - phrase: ${phrase.phrase}`);
-});
-
 /** 
  * Listens for click on `#btn__reset` and calls startGame() on game object
  */
 document.getElementById('btn__reset').addEventListener('click', function(){
     game.startGame();
+    console.log(`Active Phrase - phrase: ${game.activePhrase.phrase}`);
 });
 
 /** 
