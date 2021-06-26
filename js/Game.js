@@ -21,12 +21,16 @@
 
     // hides the start screen overlay, calls the getRandomPhrase() method, and sets the activePhrase property with the chosen phrase. It also adds that phrase to the board by calling the addPhraseToDisplay() method on the active Phrase object
     startGame() {
-
+        document.getElementById( 'overlay' ).style.display = 'none';
+        const randomPhrase = game.getRandomPhrase();
+        this.activePhrase = new Phrase(randomPhrase.phrase);
+        this.activePhrase.addPhraseToDisplay();
     }
 
     // this method randomly retrieves one of the phrases stored in the phrases array and returns it.
     getRandomPhrase() {
-
+        let randomPhrase = this.phrases[ Math.floor( Math.random() * this.phrases.length ) ];
+        return randomPhrase;
     }
 
     // this method controls most of the game logic. It checks to see if the button clicked by the player matches a letter in the phrase, and then directs the game based on a correct or incorrect guess
@@ -40,12 +44,14 @@
     }
 
     // this method checks to see if the player has revealed all of the letters in the active phrase.
+    // @return {boolean} True if game has been won, false if game wasn't
     checkForWin() {
 
     }
 
     // this method displays the original start screen overlay, and depending on the outcome of the game, updates the overlay h1 element with a friendly win or loss message, and replaces the overlay’s start CSS class with either the win or lose CSS class.
-    gameOver() {
+    // @param {boolean} gameWon - Whether or not the user won the game
+    gameOver(gameWon) {
 
     }
 }
