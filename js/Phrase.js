@@ -12,7 +12,7 @@
         for ( let i = 0; i < this.phrase.length; i++ ) {
             const listItem = document.createElement('li');
             listItem.textContent = this.phrase[i];
-            document.querySelector( '#phrase' ).firstElementChild.append(listItem);
+            phraseUl.appendChild(listItem);
             // if the list item has text content it is given the class 'letter', if not it is given the class 'space'
             if ( listItem.textContent !== ' ' ) {
                 listItem.className = 'letter';
