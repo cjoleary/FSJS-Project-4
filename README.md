@@ -6,4 +6,4 @@ Each time the player guesses a letter, the program compares the letter the playe
 
 A player continues to select letters until they guess the phrase (and win), or make five incorrect guesses (and lose).
 
-If the player completes the phrase before they run out of guesses, a winning screen appears. If the player guesses incorrectly five times, a losing screen appears.
+If the player completes the phrase before they run out of guesses, a winning screen appears. If the player guesses incorrectly five times, a losing screen appears. The player can click the 'Try Again' button to reset the gameboard, keyboard, hearts, and start a new game.
