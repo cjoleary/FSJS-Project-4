@@ -5,33 +5,32 @@
 class Game {
     constructor() {
         this.missed = 0;
-        this.phrases = [
-            new Phrase("A BLESSING IN DISGUISE"),
-            new Phrase("A DIME A DOZEN"),
-            new Phrase("ONCE IN A BLUE MOON"), 
-            new Phrase("EVERY DOG HAS ITS DAY"), 
-            new Phrase("IT TAKES TWO TO TANGO"),
-            new Phrase("BETTER LATE THAN NEVER"),
-            new Phrase("BEAT AROUND THE BUSH"),
-            new Phrase("EARLY BIRD GETS THE WORM"),
-            new Phrase("WHEN IT RAINS IT POURS")
+        this.movies = [
+            new Movie("A BLESSING IN DISGUISE"),
+            new Movie("A DIME A DOZEN"),
+            new Movie("ONCE IN A BLUE MOON"), 
+            new Movie("EVERY DOG HAS ITS DAY"), 
+            new Movie("IT TAKES TWO TO TANGO"),
+            new Movie("BETTER LATE THAN NEVER"),
+            new Movie("BEAT AROUND THE BUSH"),
+            new Movie("WHEN IT RAINS IT POURS")
         ];
-        this.activePhrase = null;
+        this.activeMovie = null;
     }
     
 
-    // hides the start screen overlay, calls the getRandomPhrase() method, and sets the activePhrase property with the chosen phrase. It also adds that phrase to the board by calling the addPhraseToDisplay() method on the active Phrase object
+    // hides the start screen overlay, calls the getRandomMovie() method, and sets the activeMovie property with the chosen movie. It also adds that movie to the board by calling the addMovieToDisplay() method on the active Movie object
     startGame() {
         overlay.style.display = 'none';
-        const randomPhrase = game.getRandomPhrase();
-        this.activePhrase = new Phrase(randomPhrase.phrase);
-        this.activePhrase.addPhraseToDisplay();
+        const randomMovie = game.getRandomMovie();
+        this.activeMovie = new Movie(randomMovie.movie);
+        this.activeMovie.addMovieToDisplay();
     }
 
-    // this method randomly retrieves one of the phrases stored in the phrases array and returns it.
-    getRandomPhrase() {
-        let randomPhrase = this.phrases[ Math.floor( Math.random() * this.phrases.length ) ];
-        return randomPhrase;
+    // this method randomly retrieves one of the movies stored in the movies array and returns it.
+    getRandomMovie() {
+        let randomMovie = this.movies[ Math.floor( Math.random() * this.movies.length ) ];
+        return randomMovie;
     }
 
     
@@ -39,9 +38,9 @@ class Game {
     // @param (HTMLButtonElement) button - The clicked button element
     handleInteraction(button) {
         button.disabled = true;
-        if( this.activePhrase.checkLetter(button.textContent) ) {
+        if( this.activeMovie.checkLetter(button.textContent) ) {
             button.className += ' chosen';
-            this.activePhrase.showMatchedLetter(button.textContent);
+            this.activeMovie.showMatchedLetter(button.textContent);
             this.checkForWin();
         } else {
             button.className += ' wrong';
@@ -76,23 +75,23 @@ class Game {
     // @param {boolean} gameWon - Whether or not the user won the game
     gameOver(gameWon) {
         if ( gameWon ) {
-            // setTimeout( () => {
+            setTimeout( () => {
                 overlay.className = 'win';
                 overlay.style.display = 'flex';
                 gameOverMsg.textContent = "We have a winner!";
                 scoreboard.style.display = 'none';
                 resetBtn.textContent = 'Try Again';
-            // }, 750);
                 this.resetGame();
+            }, 500);
         } else {
-            // setTimeout( () => {
+            setTimeout( () => {
                 overlay.className = 'lose';
                 overlay.style.display = 'flex';
                 gameOverMsg.textContent = 'Sorry, better luck next time!';
                 scoreboard.style.display = 'none';
                 resetBtn.textContent = 'Try Again';
-            // }, 500);
                 this.resetGame();
+            }, 500);
         }
     }
 
@@ -118,6 +117,6 @@ class Game {
         }
 
         // resets active phrase
-        phraseUl.innerHTML = '';
+        movieUl.innerHTML = '';
     }
 }
