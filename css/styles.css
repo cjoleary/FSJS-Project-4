@@ -148,6 +148,7 @@ button {
   padding: 8px;
   margin: 50px auto;
   background: #FFFFFF;
+  color: var(--color-start);
   opacity: 0.6;
   border-radius: 5px;
   font-weight: bold;
