@@ -6,14 +6,21 @@ class Game {
     constructor() {
         this.missed = 0;
         this.movies = [
-            new Movie("A BLESSING IN DISGUISE"),
-            new Movie("A DIME A DOZEN"),
-            new Movie("ONCE IN A BLUE MOON"), 
-            new Movie("EVERY DOG HAS ITS DAY"), 
-            new Movie("IT TAKES TWO TO TANGO"),
-            new Movie("BETTER LATE THAN NEVER"),
-            new Movie("BEAT AROUND THE BUSH"),
-            new Movie("WHEN IT RAINS IT POURS")
+            new Movie("FIGHT CLUB"),
+            new Movie("THE MUMMY"),
+            new Movie("THE IRON GIANT"), 
+            new Movie("NOTTING HILL"), 
+            new Movie("VARSITY BLUES"),
+            new Movie("ANY GIVEN SUNDAY"),
+            new Movie("THE GREEN MILE"),
+            new Movie("BIG DADDY"),
+            new Movie("AMERICAN BEAUTY"),
+            new Movie("OCTOBER SKY"),
+            new Movie("AMERICAN PIE"),
+            new Movie("THE SIXTH SENSE"),
+            new Movie("MAN ON THE MOON"),
+            new Movie("WILD WILD WEST"),
+            new Movie("EYES WIDE SHUT"),
         ];
         this.activeMovie = null;
     }
@@ -81,6 +88,7 @@ class Game {
                 gameOverMsg.textContent = "We have a winner!";
                 scoreboard.style.display = 'none';
                 resetBtn.textContent = 'Try Again';
+                resetBtn.style.color = 'var(--color-win)';
                 this.resetGame();
             }, 500);
         } else {
@@ -90,6 +98,7 @@ class Game {
                 gameOverMsg.textContent = 'Sorry, better luck next time!';
                 scoreboard.style.display = 'none';
                 resetBtn.textContent = 'Try Again';
+                resetBtn.style.color = 'var(--color-lose)';
                 this.resetGame();
             }, 500);
         }
