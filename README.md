@@ -13,3 +13,4 @@ Personalized Styles:
 - change --color-start to #038690
 - add wiggle animation to .show class
 - bold font-weight for .title and .btn__reset
+- use movie reel icons for tries instead of hearts
