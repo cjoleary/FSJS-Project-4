@@ -4,9 +4,9 @@
 /* Variables */
 
 :root {
-  --color-win: #78CF82;
+  --color-win: #5FCF80;
   --color-lose: #D94545;
-  --color-start: #5b85b7;
+  --color-start: #038690;
   --color-neutral: #445069;
   --color-neutral-light: #D2D2D2;
   --color-keys: #37474F;
@@ -60,11 +60,6 @@ button {
   cursor: pointer;
 }
 
-#btn__reset {
-	width: 200px;
-	margin: 0 auto;
-}
-
 .main-container {
   display: flex;
   flex-direction: column;
@@ -79,7 +74,7 @@ button {
   padding: 10px;
 }
 
-#phrase ul li{
+#movie ul li{
   margin-top: 15px;
 }
 
@@ -90,7 +85,7 @@ button {
 }
 
 
-/* Phrase */
+/* Movie Title */
 
 .letter {
   font-size: var(--font-size-medium);
@@ -118,10 +113,17 @@ button {
   padding: 20px 1px 0 1px;
   margin-right: 2px;
   border-radius: 5px;
-  -webkit-animation-duration: .5s;
-  animation-duration: .5s;
+  animation: wiggle .5s cubic-bezier(.36,.07,.19,.97) both;
 }
 
+@keyframes wiggle {
+  0% { transform: rotate(0deg); }
+ 20% { transform: rotate(-5deg); }
+ 40% { transform: rotate(5deg); }
+ 60% { transform: rotate(-5deg); }
+ 80% {transform: rotate(5deg); }
+100% { transform: rotate(0deg); }
+}
 
 /* Keyboard */
 
@@ -143,20 +145,20 @@ button {
 }
 
 .btn__reset {
-  padding: 16px;
+  padding: 8px;
   margin: 50px auto;
-  background: #f7a964;
+  background: #FFFFFF;
+  opacity: 0.6;
   border-radius: 5px;
-  font-size: 20px;
+  font-weight: bold;
+  font-size: var(--font-size-medium);
   cursor: pointer;
-  border-bottom: solid 4px rgba(0, 0, 0, .3);
-  border-right: solid 3px rgba(0, 0, 0, .3)
+  width: 200px;
+	margin: 1rem auto 0;
 }
 
-.btn__reset:active {
-  padding: 14px 16px 16px 14px;
-  border-bottom: solid 4px rgba(0, 0, 0, 0);
-  border-right: solid 3px rgba(0, 0, 0, 0);
+.btn__reset:hover {
+  opacity: 1.0;
 }
 
 
@@ -177,10 +179,11 @@ button {
 
 .title {
   color: #FFF;
+  font-weight: bold;
 }
 
 .start {
-  background-color: #3a3f58;
+  background-color: var(--color-start);
 }
 
 .start a {
@@ -196,7 +199,7 @@ button {
 }
 
 .lose {
-  background-color: #f5785f;
+  background-color: var(--color-lose);
 }
 
 .lose a {
