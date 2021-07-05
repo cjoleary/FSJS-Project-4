@@ -18,10 +18,13 @@ document.getElementById('btn__reset').addEventListener('click', function(){
 });
 
 // Listen for keyboard presses
-// document.addEventListener('keydown', function(e){
-//     game.handleInteraction(e.key);
-//     console.log(e.key);
-// });
+document.addEventListener('keydown', function(e){
+    keyboardBtns.forEach((button) => {
+        if (button.textContent === e.key && button.disabled === false) {
+            game.handleInteraction(button)
+        }
+    })
+});
 
 keyboardBtns.forEach( key => {
     key.addEventListener( 'click', function(e) {
