@@ -7,7 +7,7 @@ const gameOverMsg = document.getElementById( 'game-over-message' );
 const hearts = document.querySelectorAll('.tries');
 const keyboardBtns = document.querySelectorAll( '.key' );
 const overlay = document.getElementById( 'overlay' );
-const movieUl = document.getElementById( 'movie' );
+const phraseUl = document.getElementById( 'phrase' );
 const resetBtn = document.getElementById( 'btn__reset' );
 const scoreboard = document.getElementById('scoreboard');
 

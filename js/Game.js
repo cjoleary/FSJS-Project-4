@@ -5,39 +5,40 @@
 class Game {
     constructor() {
         this.missed = 0;
-        this.movies = [
-            new Movie("FIGHT CLUB"),
-            new Movie("THE MUMMY"),
-            new Movie("THE IRON GIANT"), 
-            new Movie("NOTTING HILL"), 
-            new Movie("VARSITY BLUES"),
-            new Movie("ANY GIVEN SUNDAY"),
-            new Movie("THE GREEN MILE"),
-            new Movie("BIG DADDY"),
-            new Movie("AMERICAN BEAUTY"),
-            new Movie("OCTOBER SKY"),
-            new Movie("AMERICAN PIE"),
-            new Movie("THE SIXTH SENSE"),
-            new Movie("MAN ON THE MOON"),
-            new Movie("WILD WILD WEST"),
-            new Movie("EYES WIDE SHUT"),
+        this.phrases = [
+            new Phrase("FIGHT CLUB"),
+            new Phrase("THE MUMMY"),
+            new Phrase("THE IRON GIANT"), 
+            new Phrase("NOTTING HILL"), 
+            new Phrase("VARSITY BLUES"),
+            new Phrase("ANY GIVEN SUNDAY"),
+            new Phrase("THE GREEN MILE"),
+            new Phrase("BIG DADDY"),
+            new Phrase("AMERICAN BEAUTY"),
+            new Phrase("OCTOBER SKY"),
+            new Phrase("AMERICAN PIE"),
+            new Phrase("THE SIXTH SENSE"),
+            new Phrase("MAN ON THE MOON"),
+            new Phrase("WILD WILD WEST"),
+            new Phrase("EYES WIDE SHUT"),
+            new Phrase("OFFICE SPACE"),
         ];
-        this.activeMovie = null;
+        this.activePhrase = null;
     }
     
 
-    // hides the start screen overlay, calls the getRandomMovie() method, and sets the activeMovie property with the chosen movie. It also adds that movie to the board by calling the addMovieToDisplay() method on the active Movie object
+    // hides the start screen overlay, calls the getRandomPhrase() method, and sets the activePhrase property with the chosen phrase. It also adds that phrase to the board by calling the addPhraseToDisplay() method on the active Phrase object
     startGame() {
         overlay.style.display = 'none';
-        const randomMovie = game.getRandomMovie();
-        this.activeMovie = new Movie(randomMovie.movie);
-        this.activeMovie.addMovieToDisplay();
+        const randomPhrase = game.getRandomPhrase();
+        this.activePhrase = new Phrase(randomPhrase.phrase);
+        this.activePhrase.addPhraseToDisplay();
     }
 
-    // this method randomly retrieves one of the movies stored in the movies array and returns it.
-    getRandomMovie() {
-        let randomMovie = this.movies[ Math.floor( Math.random() * this.movies.length ) ];
-        return randomMovie;
+    // this method randomly retrieves one of the phrases stored in the phrases array and returns it.
+    getRandomPhrase() {
+        let randomPhrase = this.phrases[ Math.floor( Math.random() * this.phrases.length ) ];
+        return randomPhrase;
     }
 
     
@@ -45,9 +46,9 @@ class Game {
     // @param (HTMLButtonElement) button - The clicked button element
     handleInteraction(button) {
         button.disabled = true;
-        if( this.activeMovie.checkLetter(button.textContent) ) {
+        if( this.activePhrase.checkLetter(button.textContent) ) {
             button.className += ' chosen';
-            this.activeMovie.showMatchedLetter(button.textContent);
+            this.activePhrase.showMatchedLetter(button.textContent);
             this.checkForWin();
         } else {
             button.className += ' wrong';
@@ -126,6 +127,6 @@ class Game {
         }
 
         // resets active phrase
-        movieUl.innerHTML = '';
+        phraseUl.innerHTML = '';
     }
 }
