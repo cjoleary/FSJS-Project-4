@@ -50,9 +50,15 @@ class Game {
             button.className += ' chosen';
             this.activePhrase.showMatchedLetter(button.textContent);
             this.checkForWin();
+            if (this.checkForWin()) {
+                this.gameOver(true);
+            }
         } else {
             button.className += ' wrong';
             this.removeLife();
+            if ( this.missed >= 5 ) {
+                this.gameOver(false);
+            }
         }
     };
 
@@ -60,10 +66,6 @@ class Game {
     removeLife() {
         this.missed++;
         hearts[this.missed - 1].style.opacity = '0.25';
-
-        if ( this.missed >= 5 ) {
-            this.gameOver(false);
-        }
     }
 
     // this method checks to see if the player has revealed all of the letters in the active phrase.
@@ -73,7 +75,7 @@ class Game {
         const letter = document.querySelectorAll( '.letter' );
 
         if ( letter.length === show.length ) {
-            this.gameOver(true);
+            return true;
         } else {
             return false;
         }
