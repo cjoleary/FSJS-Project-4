@@ -2,7 +2,7 @@
  * Project 4 - OOP Game App
  * app.js */
 
-const game = new Game();
+let game;
 const gameOverMsg = document.getElementById( 'game-over-message' );
 const hearts = document.querySelectorAll('.tries');
 const keyboardBtns = document.querySelectorAll( '.key' );
@@ -13,13 +13,14 @@ const scoreboard = document.getElementById('scoreboard');
 
 // Listens for click on `#btn__reset` and calls startGame() on game object
 document.getElementById('btn__reset').addEventListener('click', function(){
+    game = new Game();
     game.startGame();
 });
 
 // Listen for keyboard presses
 document.addEventListener('keydown', function(e){
     keyboardBtns.forEach((button) => {
-        if (button.textContent === e.key && button.disabled === false) {
+        if (button.textContent === e.key && button.disabled === false && overlay.style.display === 'none') {
             game.handleInteraction(button)
         }
     })
