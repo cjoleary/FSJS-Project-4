@@ -22,6 +22,7 @@ class Game {
             new Phrase("WILD WILD WEST"),
             new Phrase("EYES WIDE SHUT"),
             new Phrase("OFFICE SPACE"),
+            new Phrase("HIGH FIDELITY"),
         ];
         this.activePhrase = null;
     }
